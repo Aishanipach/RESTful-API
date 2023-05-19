@@ -16,19 +16,24 @@ export const getcontacts = (req, res) => {
 }
 
 export const getContactById = (req, res) => {
-    const Id = req.params.contactId
+    const Id = req.query.contactId
     console.log(Id)
     const name = req.query.fname
     Contact.findById(Id).then(contact => res.json(contact)).catch(err => (console.log(err)));
 }
 
+
 export const updateContact = (req, res) => {
     const Id = req.query.contactId
-    Contact.findOneAndUpdate({ _id: Id }, req.body, { new: true }, (err, contact) => {
-        if (err) {
-            res.send(err);
+    Contact.findOneAndUpdate({ _id: Id }, { email: req.body.email }, {
 
-        }
-        res.json(contact)
-    });
+        new: true,
+        upsert: true // Make this update into an upsert
+    }).then(contact => res.json(contact)).catch(err => console.log(err))
+
+}
+
+export const deleteContact = (req, res) => {
+    const Id = req.query.contactId
+    Contact.findOneAndRemove({ _id: Id }).then(res.json(`Deleted succesfully ${Id}`)).catch(err => console.log(err))
 }

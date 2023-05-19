@@ -8,7 +8,7 @@ Express &amp; Node.js to create a sleek CRUD RESTful API.
 
 ### .query
 
-GET localhost:3000/contact/contactId/?contactId=6445253611bf9415c392c52e
+GET localhost:3000/contact/contactId/?contactId=_(Id)_
 
 crmRoutes.js
 
@@ -30,7 +30,7 @@ export const getContactById = (req, res) => {
 
 ### .params
 
-GET localhost:3000/contact/6445253611bf9415c392c52e
+GET localhost:3000/contact/_(Id)_
 
 crmRoutes.js
 
