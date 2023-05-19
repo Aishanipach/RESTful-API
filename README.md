@@ -48,3 +48,8 @@ export const getContactById = (req, res) => {
 }
 
 ```
+
+### Resources:
+
+1. https://mongoosejs.com/docs/tutorials/findoneandupdate.html
+2. https://www.geeksforgeeks.org/mongoose-findoneandupdate-function/
